@@ -1,0 +1,481 @@
+%% FEUP THESIS STYLE for LaTeX2e
+%% how to use feupteses (English version)
+%%
+%% FEUP, JCL & JCF, 31 July 2012
+%%
+%% Read the documentation inline and
+%% at https://web.fe.up.pt/~jlopes/doku.php/teach/feupteses
+%%
+%% PLEASE send improvements to jlopes at fe.up.pt and to jcf at fe.up.pt
+%%
+
+%%========================================
+%% Commands: pdflatex tese
+%%           bibtex tese
+%%           makeindex tese (only if creating an index)
+%%           pdflatex tese
+%% Alternative:
+%%          latexmk -pdf tese.tex
+%%========================================
+
+%% 2021-07-20: One-sided output by default
+\documentclass[11pt,a4paper]{report}
+
+%% For two-sided printing (for dead-tree output) comment previous line
+%% and uncomment the next line
+%% \documentclass[11pt,a4paper,twoside,openright]{report}
+
+%% For iso-8859-1 (latin1), comment next line and uncomment the second line
+\usepackage[utf8]{inputenc}
+%\usepackage[latin1]{inputenc}
+
+%% English version
+
+%% MEIC options
+%\usepackage[meic]{feupteses}
+%\usepackage[meic,juri]{feupteses}
+%\usepackage[meic,final]{feupteses}
+%\usepackage[meic,final,onpaper]{feupteses}
+
+%% MEEC options
+%\usepackage[meec]{feupteses}
+%\usepackage[meec,juri]{feupteses}
+%\usepackage[meec,final]{feupteses}
+
+%% For other degrees
+\usepackage{feupteses} % you must define the degree bellow
+
+%% Additional options for feupteses.sty: 
+%% - portugues: titles, etc in portuguese
+%% - onpaper: links are not shown (for paper versions)
+%% - backrefs: include back references from bibliography to citation place
+
+%% include my packages not included in feupteses.sty
+%% 
+
+%% Uncomment the next lines if side by side graphics used
+\usepackage[lofdepth,lotdepth]{subfig}
+\usepackage{graphicx}
+\usepackage{float}
+
+% Listings
+\definecolor{cloudwhite}{cmyk}{0,0,0,0.025}  % color
+
+%% Include source-code listings package
+\usepackage{listings}
+\lstset{ %
+ language=C,                        % choose the language of the code
+ basicstyle=\footnotesize\ttfamily,
+ keywordstyle=\bfseries,
+ numbers=left,                      % where to put the line-numbers
+ numberstyle=\scriptsize\texttt,    % the size of the fonts that are used for the line-numbers
+ stepnumber=1,                      % the step between two line-numbers. If it's 1 each line will be numbered
+ numbersep=8pt,                     % how far the line-numbers are from the code
+ frame=tb,
+ float=htb,
+ aboveskip=8mm,
+ belowskip=4mm,
+ backgroundcolor=\color{cloudwhite},
+ showspaces=false,                  % show spaces adding particular underscores
+ showstringspaces=false,            % underline spaces within strings
+ showtabs=false,                    % show tabs within strings adding particular underscores
+ tabsize=2,                         % sets default tabsize to 2 spaces
+ captionpos=b,                      % sets the caption-position to bottom
+ breaklines=true,                   % sets automatic line breaking
+ breakatwhitespace=false,           % sets if automatic breaks should only happen at whitespace
+ escapeinside={\%*}{*)},            % if you want to add a comment within your code
+ morekeywords={*,var,template,new}  % if you want to add more keywords to the set
+}
+
+%% Uncomment to create an index (at the end of the document)
+%\makeindex
+
+%% Path to the figures directory
+%% TIP: use folder ``figures'' to keep all your figures
+\graphicspath{{figures/}}
+
+%%========================================
+%% Start of document
+%%========================================
+\begin{document}
+
+%%----------------------------------------
+%% TIP: if you want to define more macros, use an external file to keep them
+\include{mymacros}
+%%----------------------------------------
+
+%%----------------------------------------
+%% Information about the work
+%%----------------------------------------
+\title{Title of the Dissertation}
+\author{Author name}
+
+%% Comment next line if not necessary for degree
+\degree{Programa Doutoral em Engenharia Informática}
+
+%% Uncomment next line for date of submission
+%\thesisdate{July 31, 2008}
+
+%% Comment next line copyright text if not used
+\copyrightnotice{Author name, 2008}
+
+\supervisor{Supervisor}{Name of the Supervisor}
+
+%% Uncomment next line if necessary
+%\supervisor{Second Supervisor}{Name of the Supervisor}
+
+%% Uncomment committee stuff in the final version if used
+%\committeetext{Approved by \ldots:}
+%\committeemember{President}{Name of the President}
+%\committeemember{Referee}{Name of the Referee}
+%\committeemember{Referee}{Name of the Referee}
+
+%% Uncomment signature line in the final on paper version if used
+%\signature
+
+%% Specify cover logo (in folder ``figures'')
+\logo{uporto-feup.pdf}
+
+%% Uncomment next line for additional text below the author's name (front page)
+%\additionalfronttext{Preparação da Dissertação}
+
+%%----------------------------------------
+%% Preliminary materials
+%%----------------------------------------
+
+% remove unnecessary \include{} commands
+\begin{Prolog}
+  \include{abstract} % the abstract
+  \include{acknows}  % the acknowledgments
+  \include{quote}    % initial quotation if desired
+  \cleardoublepage
+  \pdfbookmark[0]{Table of Contents}{contents}
+  \tableofcontents
+  \cleardoublepage
+  \pdfbookmark[0]{List of Figures}{figures}
+  \listoffigures
+  \cleardoublepage
+  \pdfbookmark[0]{List of Tables}{tables}
+  \listoftables
+  \include{abbrevs}  % the list of abbreviations used
+\end{Prolog}
+
+%%----------------------------------------
+%% Body
+%%----------------------------------------
+\StartBody
+
+%% TIP: use a separate file for each chapter
+\include{chapter1}
+\include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{chapter5}
+
+%%----------------------------------------
+%% Final materials
+%%----------------------------------------
+
+%% Bibliography
+%% Comment the next command if BibTeX file not used
+%% bibliography is in ``myrefs.bib''
+\PrintBib{myrefs}
+
+%% 2021-07-20: change
+%% comment next 2 commands if numbered appendices are not used
+\appendix
+\include{appendix1}
+
+%% Index
+%% Uncomment next command if index is required
+%% don't forget to run ``makeindex thesis'' command
+%\PrintIndex
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+% \documentclass[a4paper,12pt]{report}
+% \setlength{\parskip}{0.5pt}%
+% \setlength{\parindent}{20pt}%
+
+% %preamble: style and/or packages
+% \author{Michele Magni}
+% \title{PhD research proposal}
+% \date{January 2023}
+
+% %\usepackage{package}
+
+% \usepackage{hyperref}
+% \usepackage{titlesec}
+% \setcounter{secnumdepth}{3}
+% \usepackage{enumitem}
+% \usepackage{varwidth}
+% \usepackage{tasks}
+
+% \usepackage{graphicx}
+% \usepackage{siunitx}
+
+% %colors, boxes
+% \usepackage[dvipsnames]{xcolor}
+% \usepackage[most]{tcolorbox}
+% \tcbuselibrary{fitting}
+
+% \definecolor{columbiablue}{rgb}{0.61, 0.87, 1.0}
+% \definecolor{mossgreen}{rgb}{0.68, 0.87, 0.68}
+
+% \usepackage[super,sort&compress,comma]{natbib}
+% \bibliographystyle{naturemag}
+
+% %indent first line
+% \usepackage{indentfirst}
+% \setlength{\parindent}{30pt}
+
+% %captions
+% \usepackage[font=footnotesize,labelfont={bf,it}, textfont=it]{caption}
+% \usepackage[labelsep=period]{caption}
+
+% %landscape pages
+% \usepackage{pdflscape}
+% \usepackage{fancyhdr} 
+% \usepackage{feupphdteses} 
+
+% %page number at bottom in landscape 
+% \fancypagestyle{mylandscape}{
+% \fancyhf{} %Clears the header/footer
+% \fancyfoot{% Footer
+% \makebox[\textwidth][r]{% Right
+%   \rlap{\hspace{.75cm}% Push out of margin by \footskip
+%     \smash{% Remove vertical height
+%       \raisebox{4.87in}{% Raise vertically
+%         \rotatebox{90}{\thepage}}}}}}% Rotate counter-clockwise
+% \renewcommand{\headrulewidth}{0pt}% No header rule
+% \renewcommand{\footrulewidth}{0pt}% No footer rule
+% }
+
+% \newcommand{\Feup}{Faculdade de Engenharia da Universidade do Porto}
+
+% %temporarily disable superscript
+% \DeclareRobustCommand*{\citen}[1]{%
+%   \begingroup
+%     \romannumeral-`\x % remove space at the beginning of \setcitestyle
+%     \setcitestyle{numbers}%
+%     \cite{#1}%
+%   \endgroup   
+% }
+
+
+% \begin{document}
+
+% % cover page
+% \begin{center}
+%   \thispagestyle{empty}
+%   \begin{LARGE}
+%     Title  \\[1 cm] \vfill
+%   \end{LARGE}
+
+
+%   \begin{Large}
+%     PhD research proposal \\ [1 cm]\vfill
+%     Author \\
+%     \href{mailto:<email>}{$<$email$>$} \\[1 cm]\vfill
+
+
+%     Month Year\\[1 cm]\vfill
+
+%     1st supervisor: $<$1st supervisor$>$ \\
+%     2nd supervisor: $<$2nd supervisor$>$ \\[1 cm]\vfill
+
+%     Department of $<$Department$>$ \\
+%     \Feup \\
+%     %choose between bnw or rgb logo
+%     \centerline{
+%       \includegraphics[trim={0cm 1cm 2.1cm 0.5cm},clip]{./figures/UU_logo_2021_NL_RGB.jpg}
+%     }
+
+%   \end{Large}
+% \end{center}
+
+% % document begins
+% \newpage
+% %%table of contents 
+% {\setlength\parskip{\fill}
+%   \tableofcontents
+% }
+
+% %you can start a new page anytime with \newpage
+% \newpage
+
+% %Abstract
+% \section*{Abstract}
+% \addcontentsline{toc}{section}{\protect\numberline{}Abstract}
+
+% %%Introduction
+% \newpage
+% \section{Introduction}
+
+% \subsection{Background}
+
+% \subsubsection{An additional subsection}
+
+% The most cited paper \citep{lowry1951protein}.
+
+% You can reference a figure like this (fig.~\ref{fig:mandelbrot}). Upload your own figures in the /figures/ folder.
+
+% %figure template
+% \begin{figure}[ht]
+%   \centerline{
+%     \includegraphics[scale=1.2]{./figures/mandelbrot.jpg}
+%   }
+%   \caption{A caption \citep{mandelbrot1982fractal} or non-superscripted reference [\citen{mandelbrot1982fractal}]}
+%   \label{fig:mandelbrot}
+% \end{figure}
+
+% \newpage
+% \subsection{State of the art}
+
+% \begin{enumerate}
+%   \item
+%         First item;
+%   \item
+%         Second item;
+%   \item
+%         Third item.
+% \end{enumerate}
+
+% \subsection{Knowledge gaps}
+
+% \begin{itemize}
+%   \item
+%         First item;
+%   \item
+%         Second item;
+%   \item
+%         Third item.
+% \end{itemize}
+
+
+% %Add extra space 
+% \vspace*{5mm}
+
+% %Objective and research questions
+% \newpage
+% \section{Objective and research questions}
+
+% \begin{tcolorbox}[minipage,colback=Goldenrod,arc=0pt,outer arc=0pt]
+%   \centering
+%   \textbf{An overarching objective.}
+% \end{tcolorbox}
+
+% \textbf{RQ 1.}	\emph{First research question?}\\
+
+% \textbf{RQ 2.}	\emph{Second research question?}\\
+
+% \textbf{RQ 3.}	\emph{Et cetera...}\\
+
+% %Methods
+% \newpage
+% \section{Methods}
+% \subsection{Methods tackling the first research question}
+
+% \vspace*{10mm}
+
+% \begin{tcolorbox}[minipage,colback=columbiablue,arc=10pt,outer arc=10pt]
+%   \centering
+%   \textbf{RQ 1.}	\emph{First research question}
+% \end{tcolorbox}
+
+% \vspace*{10mm}
+
+
+% \noindent \textbf{a. Methodology}\\ [0.1 cm]
+
+% \textbf{i. First step}
+
+% \textbf{ii. Second step}
+% \vspace*{5mm}
+
+% %example of equation
+% An equation (eq. \ref{eq:euler}):
+% \begin{equation} \label{eq:euler}
+%   e^{ \pm i\theta } = \cos \theta \pm i\sin \theta
+% \end{equation}
+
+% \textbf{iii. Third step}
+% \vspace*{5mm}
+
+
+% \noindent \textbf{b. Novelty}\\ [0.1 cm]
+
+% \begin{tcolorbox}[minipage,colback=mossgreen,arc=10pt,outer arc=10pt]
+%   \centering
+%   \textbf{Paper 1. \emph{First paper}}
+% \end{tcolorbox}
+
+% \vspace*{5mm}
+
+% \noindent \textbf{c. Risks and feasibility}\\ [0.1 cm]
+
+% \noindent \textbf{d. Outcomes} \vspace*{5mm}
+
+% \textbf{Outcome 1.1.} Outcome 1.1\\
+
+% \textbf{Outcome 1.2.} Outcome 1.2.
+
+
+
+% % you can find the template for this gantt chart in /figures/gantt_template.pptx, convert it to pdf and then to png to upload it on the document
+
+% %example of a temporarily horizontal page
+% \newpage
+% \begin{landscape}
+%   \thispagestyle{mylandscape}
+%   \vspace*{-3cm}
+%   \section{Timetable}
+%   \begin{figure}[!htb]\vspace*{-0.4cm}
+%     \centerline{
+%       \includegraphics[scale=0.67]{./figures/gantt_template.png}
+%     }
+%     \caption{Gantt chart of the PhD project.}
+%     \label{fig:gantt}
+%   \end{figure}
+% \end{landscape}
+
+
+
+% \newpage
+% \section{Collaborations}
+% \vspace*{1 cm}
+% \noindent \textbf{University - Department}\\
+
+% \noindent University address\\
+
+% \textbf{Theme}
+
+% Person 1 - \href{mailto:<email>}{$<$email$>$} \\ \vspace*{-5.5mm}
+
+% Person 2 – \href{mailto:<email>}{$<$email$>$} \\
+
+% \textbf{Theme 2}
+
+% Person 1 - \href{mailto:<email>}{$<$email$>$} \\ \vspace*{-5.5mm}
+
+% Person 2 – \href{mailto:<email>}{$<$email$>$} \\\\
+
+
+% \section{Data management plan}
+
+% \newpage
+% % references
+% \addcontentsline{toc}{section}{References}
+% \bibliography{references.bib}
+
+% \end{document}
+
