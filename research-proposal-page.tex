@@ -43,7 +43,7 @@
 %\usepackage[meec,final]{feupteses}
 
 %% For other degrees
-\usepackage{feupteses} % you must define the degree bellow
+\usepackage{styles/feupteses} % you must define the degree bellow
 
 %% Additional options for feupteses.sty: 
 %% - portugues: titles, etc in portuguese
@@ -57,6 +57,7 @@
 \usepackage[lofdepth,lotdepth]{subfig}
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{subfiles}
 
 % Listings
 \definecolor{cloudwhite}{cmyk}{0,0,0,0.025}  % color
@@ -101,7 +102,7 @@
 
 %%----------------------------------------
 %% TIP: if you want to define more macros, use an external file to keep them
-\include{mymacros}
+\include{macros/mymacros}
 %%----------------------------------------
 
 %%----------------------------------------
@@ -145,7 +146,7 @@
 
 % remove unnecessary \include{} commands
 \begin{Prolog}
-  \include{abstract} % the abstract
+  \include{abstract/abstract} % the abstract
   \include{acknows}  % the acknowledgments
   \include{quote}    % initial quotation if desired
   \cleardoublepage
@@ -166,11 +167,11 @@
 \StartBody
 
 %% TIP: use a separate file for each chapter
-\include{chapter1}
-\include{chapter2}
-\include{chapter3}
-\include{chapter4}
-\include{chapter5}
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
 
 %%----------------------------------------
 %% Final materials
