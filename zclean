@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Define an array of words
+words=("aux" "out" "log" "grape" "lof" "blg" "fls" "bbl" "lot" "toc" "synctex.gz" "fdb_latexmk")
+
+# Define a function that takes a word as a parameter
+# print_word() {
+#     local word="$1"
+#     echo "The word is: $word"
+# }
+
+delete_except_aux() {
+    pattern="$1"
+    
+    # # Check if the pattern is provided
+    # if [ -z "$pattern" ]; then
+    #     echo "Usage: delete_except_aux <pattern>"
+    #     return 1
+    # fi
+    
+    find . -type f -name "*.$pattern" -exec rm -rf {} \;
+    echo "Delete files with *.$pattern"
+}
+
+# Iterate over the elements of the array and call the function for each word
+for word in "${words[@]}"; do
+    delete_except_aux "$word"
+done
