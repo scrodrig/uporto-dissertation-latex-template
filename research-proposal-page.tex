@@ -147,8 +147,8 @@
 % remove unnecessary \include{} commands
 \begin{Prolog}
   \include{abstract/abstract} % the abstract
-  \include{acknows}  % the acknowledgments
-  \include{quote}    % initial quotation if desired
+  \include{ackowledges/acknows}  % the acknowledgments
+  \include{quote/quote}    % initial quotation if desired
   \cleardoublepage
   \pdfbookmark[0]{Table of Contents}{contents}
   \tableofcontents
@@ -158,7 +158,7 @@
   \cleardoublepage
   \pdfbookmark[0]{List of Tables}{tables}
   \listoftables
-  \include{abbrevs}  % the list of abbreviations used
+  \include{abbrevations/abbrevs}  % the list of abbreviations used
 \end{Prolog}
 
 %%----------------------------------------
@@ -180,12 +180,12 @@
 %% Bibliography
 %% Comment the next command if BibTeX file not used
 %% bibliography is in ``myrefs.bib''
-\PrintBib{myrefs}
+\PrintBib{references/myrefs}
 
 %% 2021-07-20: change
 %% comment next 2 commands if numbered appendices are not used
 \appendix
-\include{appendix1}
+\include{appendix/appendix1}
 
 %% Index
 %% Uncomment next command if index is required
